@@ -1,15 +1,23 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
+import { View } from '../components/Themed';
+import styled from 'styled-components/native'
+import { Button, Alert, Text } from 'react-native';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+const StyledText = styled(Text)`
+  color: dodgerblue;
+  font-size: 40px;
+`
 
 export default function TabOneScreen() {
+  const handlePress = () => {
+    Alert.alert('버튼을 클릭했습니다.')
+  }
+  
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <StyledText>Tab One</StyledText>
+      <Button title="클릭" color="hotpink" onPress={handlePress} />
     </View>
   );
 }
@@ -19,14 +27,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+  }
 });
